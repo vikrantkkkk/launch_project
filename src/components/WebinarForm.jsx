@@ -1,3 +1,5 @@
+import liveOnZoom from '../assets/liveonzoom.svg'
+
 function WebinarForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -13,17 +15,12 @@ function WebinarForm() {
     >
       <div className="px-6 pt-5 pb-4 border-b border-slate-100">
         <div className="flex items-start justify-between gap-3">
-          <h2 className="text-lg font-semibold text-slate-900">Join Webinar</h2>
-          <div className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700">
-            <span className="inline-flex items-center gap-1 rounded-md bg-red-600 px-2 py-0.5 text-[10px] font-semibold text-white">
-              • Live
-            </span>
-            <span>on</span>
-            <span className="flex items-center gap-1 text-sky-600 font-semibold">
-              <span className="inline-block h-3.5 w-3.5 rounded-full bg-sky-500" />
-              Zoom
-            </span>
-          </div>
+          <h2 className="text-xl font-bold text-[#000000]">Join Webinar</h2>
+          <img
+            src={liveOnZoom}
+            alt="Live on Zoom"
+            className="object-cover"
+          />
         </div>
         <div className="mt-3 flex items-center gap-2">
           <span className="h-0.5 w-10 rounded-full bg-blue-600" />
