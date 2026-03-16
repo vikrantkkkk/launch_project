@@ -52,26 +52,35 @@ function Hero() {
 
       <div className="flex flex-wrap items-stretch gap-3">
         <div
-          className="flex items-center gap-3 px-5 py-4 min-w-[220px] rounded-[6px]"
           style={{
-            background: '#FFFFFFB5',
-            border: '1px solid transparent',
-            borderImage:
-              'linear-gradient(99.13deg, #E66F25 -10.05%, #3A2E7D 50.57%, #E22028 120.21%) 1',
-            backdropFilter: 'blur(2.16538405418396px)',
-            boxShadow: '0px 0px 35.34px 0px #E66F253B',
-            borderRadius: '6px',
-            overflow: 'hidden',
+            padding: '1px',
+            borderRadius: '8px',
+            background:
+              'linear-gradient(105deg, #E66F25 0%, #3A2E7D 50%, #E22028 100%)',
+            boxShadow: '0px 8px 24px rgba(0,0,0,0.18)',
           }}
         >
-          <img
-            src={nseLogo}
-            alt="NSE"
-            className="h-10 w-20 rounded-md object-contain"
-          />
-          <div className="leading-tight text-gray-900">
-            <div className="text-xl sm:text-2xl font-semibold">Empanelled</div>
-            <div className="text-xs sm:text-sm font-medium">Algo Vendor</div>
+          <div
+            className="flex items-center gap-3 min-w-[230px] pr-5 pl-3 py-2"
+            style={{
+              borderRadius: '7px',
+              background: '#FFFFFFCC',
+              backdropFilter: 'blur(3px)',
+            }}
+          >
+            <img
+              src={nseLogo}
+              alt="NSE"
+              className="h-9 w-16 rounded-[4px] object-contain"
+            />
+            <div className="leading-tight text-gray-900">
+              <div className="text-base sm:text-lg font-semibold tracking-tight">
+                Empanelled
+              </div>
+              <div className="text-[11px] sm:text-xs font-medium text-gray-700">
+                Algo Vendor
+              </div>
+            </div>
           </div>
         </div>
 
