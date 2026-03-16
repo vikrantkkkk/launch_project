@@ -1,33 +1,14 @@
-import fbSvg from '../assets/fb.svg'
-import xSvg from '../assets/x.svg'
-import whatsappSvg from '../assets/whatsapp.svg'
 import mailSvg from '../assets/mail.svg'
 import phoneSvg from '../assets/phone.svg'
 import arrowtSvg from '../assets/arrowt.svg'
 
-function Footer() {
+function Footer({ className = '' }) {
   return (
-    <footer className="w-full bg-[#FFFFFF]">
-      <div className="w-full py-4 sm:py-5 lg:py-[25px] 3xl:py-8 px-4 sm:px-6 md:px-8 lg:px-[45px] 3xl:px-16">
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-5 xl:gap-6 items-start w-full">
-          {/* Column 1: Share + Contact - aligned to logo start */}
-          <div className="flex flex-col gap-4 min-w-0 shrink-0">
-            <div className="flex flex-col gap-2">
-              <span className="font-sans font-semibold text-xs 1440:text-sm 2xl:text-xs 3xl:text-base text-gray-900">
-                Share this on:
-              </span>
-              <div className="flex items-center gap-3">
-                <a href="#" className="flex items-center justify-center hover:opacity-80 transition" aria-label="Facebook">
-                  <img src={fbSvg} alt="" className="w-5 h-5 1440:w-6 1440:h-6 2xl:w-5 2xl:h-5 3xl:w-7 3xl:h-7" aria-hidden />
-                </a>
-                <a href="#" className="flex items-center justify-center hover:opacity-80 transition" aria-label="X">
-                  <img src={xSvg} alt="" className="w-5 h-5 1440:w-6 1440:h-6 2xl:w-5 2xl:h-5 3xl:w-7 3xl:h-7" aria-hidden />
-                </a>
-                <a href="#" className="flex items-center justify-center hover:opacity-80 transition" aria-label="WhatsApp">
-                  <img src={whatsappSvg} alt="" className="w-5 h-5 1440:w-6 1440:h-6 2xl:w-5 2xl:h-5 3xl:w-7 3xl:h-7" aria-hidden />
-                </a>
-              </div>
-            </div>
+    <footer className={`w-full bg-white ${className}`}>
+      <div className="w-full py-6 px-4 sm:px-6 md:px-8 lg:px-[45px] 3xl:px-16">
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-8 items-start w-full text-[#202020]">
+          {/* Column 1: Contact */}
+          <div className="flex flex-col gap-3 min-w-0 shrink-0">
             <div className="flex flex-col gap-2">
               <span className="font-sans font-semibold text-xs 1440:text-sm 2xl:text-xs 3xl:text-base text-gray-900">
                 Contact Us:

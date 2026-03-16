@@ -1,79 +1,183 @@
-import lifetimeSvg from '../assets/lifetime.svg'
-import checkSvg from '../assets/check.svg'
-import mainimgSvg from '../assets/mainimg.svg'
-import mainimg2Svg from '../assets/mainimg2.svg'
-import mainimg3Svg from '../assets/mainimg3.svg'
-
-const featureColumns = [
-  [
-    'Unlimited Pre-built Algo Deployments',
-    'Custom No Code Strategy Builder',
-    '35 Pre Built Premium Algo Strategies',
-  ],
-  [
-    '8 Ready Made Non Directional Algo Strategies',
-    '90+ Custom Indicators',
-    'Trading View and Chartink Integration',
-  ],
-  [
-    'Advanced Algo Trading Course',
-    'Fully Automatic Trading',
-  ],
-]
+import heroImage from '../assets/heroimage.svg'
+import heroImageMobile from '../assets/heroimagemobile.svg'
+import nseLogo from '../assets/nse.svg'
+import sebiLogo from '../assets/SEBI Registered.svg'
+import isoLogo from '../assets/ISO.svg'
+import bseLogo from '../assets/bse.svg'
+import x2Logo from '../assets/X 2.svg'
 
 function Hero() {
   return (
-    <section className="w-full min-w-0 pb-6">
-      <h1 className="flex flex-wrap items-center gap-3 mb-4 font-sans font-bold text-gray-900 leading-none min-w-0">
-        <span className="text-3xl sm:text-4xl lg:text-[40px] 1440:text-[48px] 2xl:text-[42px] 3xl:text-[56px] min-w-0 break-words">
-          StrykeX Algos
-        </span>
-        <img
-          src={lifetimeSvg}
-          alt="Lifetime"
-          className="h-[1.5rem] sm:h-[1.75rem] min-[1024px]:h-8 1440:h-[2rem] min-[1981px]:h-9 w-auto object-contain flex-shrink-0 block"
-        />
-      </h1>
-      <p className="font-sans font-medium text-sm 1440:text-base 2xl:text-sm 3xl:text-lg text-gray-600 max-w-3xl">
-        A powerful fully automated trading platform designed for peak performance trading all on autopilot. Our Premium StrykeX Membership includes:
-      </p>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-lg:grid-cols-1 gap-x-6 lg:gap-x-8 gap-y-1.5 1440:gap-x-6 1440:gap-y-0.5 2xl:gap-x-8 2xl:gap-y-1.5 3xl:gap-x-12 3xl:gap-y-2 mt-[32px] 3xl:mt-12 text-[10px] min-[1440px]:text-[12px] min-[1981px]:text-base text-[#040404] font-sans min-w-0">
-        {featureColumns.map((column, colIndex) => (
-          <li key={colIndex} className="flex flex-col gap-2 1440:gap-1 3xl:gap-2 min-w-0">
-            {column.map((feature, i) => (
-              <div key={i} className="flex items-center gap-2 1440:gap-1 3xl:gap-2 min-w-0">
-                <img
-                  src={checkSvg}
-                  alt=""
-                  className="w-4 h-4 1440:w-[14px] 1440:h-[14px] 2xl:w-4 2xl:h-4 3xl:w-6 3xl:h-6 shrink-0"
-                  aria-hidden
-                />
-                <span className="min-w-0 break-words">{feature}</span>
-              </div>
-            ))}
-          </li>
-        ))}
-      </ul>
-      <div
-        className="mt-8 2xl:mt-12 3xl:mt-12 w-full min-w-0 rounded-xl overflow-hidden border border-gray-100 bg-gray-50/30 mx-1 sm:mx-2"
-        style={{ boxShadow: '0px 0px 20.9px 0px #00000040' }}
-      >
-        <img
-          src={mainimgSvg}
-          alt="StrykeX dashboard preview"
-          className="hidden lg:block w-full h-auto object-contain"
-        />
-        <img
-          src={mainimg3Svg}
-          alt="StrykeX dashboard preview"
-          className="hidden md:block lg:hidden w-full h-auto object-contain"
-        />
-        <img
-          src={mainimg2Svg}
-          alt="StrykeX dashboard preview"
-          className="md:hidden w-full h-auto object-contain block"
-        />
+    <section className="w-full min-w-0 pb-0 flex flex-col gap-6">
+      <div className="inline-flex rounded-full">
+        <div
+          className="inline-flex items-center rounded-full px-4 py-1 text-2xl font-medium text-white"
+          style={{
+            background:
+              'linear-gradient(91.52deg, #3F72FF -69.26%, #0036B2 49.06%, #47B4B4 169.82%)',
+            boxShadow: '0px 2.07px 5px 0px #0059FF6B',
+          }}
+        >
+          The Future Of Trading Is Here
+        </div>
       </div>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <img src={x2Logo} alt="X2" className="h-11 w-11 rounded-2xl shadow-lg object-contain" />
+        <p className="flex flex-wrap items-center gap-2 text-3xl sm:text-4xl lg:text-5xl 1440:text-5xl 2xl:text-5xl 3xl:text-6xl font-bold leading-tight">
+          <span
+            style={{
+              background:
+                'linear-gradient(94.4deg, #3F72FF 14.23%, #0036B2 60.53%, #47B4B4 107.78%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              display: 'inline-block',
+              paddingBottom: '4px',
+            }}
+          >
+            The Biggest
+          </span>
+          <span className="text-black">Launch of 2026</span>
+        </p>
+      </div>
+
+      <p
+        className="font-sans font-medium text-base 3xl:text-lg max-w-2xl"
+        style={{ color: '#404040' }}
+      >
+        A powerful fully automated trading platform designed for peak performance trading all on
+        autopilot. Our Premium StrykeX Membership includes:
+      </p>
+
+      <div className="flex flex-wrap items-stretch gap-3">
+        <div
+          className="flex items-center gap-3 px-5 py-4 min-w-[220px] rounded-[6px]"
+          style={{
+            background: '#FFFFFFB5',
+            border: '1px solid transparent',
+            borderImage:
+              'linear-gradient(99.13deg, #E66F25 -10.05%, #3A2E7D 50.57%, #E22028 120.21%) 1',
+            backdropFilter: 'blur(2.16538405418396px)',
+            boxShadow: '0px 0px 35.34px 0px #E66F253B',
+            borderRadius: '6px',
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            src={nseLogo}
+            alt="NSE"
+            className="h-10 w-20 rounded-md object-contain"
+          />
+          <div className="leading-tight text-gray-900">
+            <div className="text-xl sm:text-2xl font-semibold">Empanelled</div>
+            <div className="text-xs sm:text-sm font-medium">Algo Vendor</div>
+          </div>
+        </div>
+
+        <div className="inline-flex items-center rounded-2xl shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 bg-white text-xs sm:text-sm">
+          {/* SEBI */}
+          <div className="flex items-center gap-3 px-4 py-3 whitespace-nowrap">
+              <img
+                src={sebiLogo}
+                alt="SEBI"
+                className="object-contain"
+              />
+              <div className="leading-tight whitespace-nowrap">
+                <div className="text-[11px] text-gray-700">SEBI Registered</div>
+                <div className="text-[11px] font-semibold text-gray-900">
+                  INH000013925
+                </div>
+              </div>
+          </div>
+          <div className="self-center h-8 w-px bg-slate-200" />
+
+          {/* ISO */}
+          <div className="flex items-center gap-3 px-4 py-3 whitespace-nowrap">
+              <img
+                src={isoLogo}
+                alt="ISO"
+                className="object-contain"
+              />
+              <div className="leading-tight whitespace-nowrap">
+                <div className="text-[11px] font-semibold text-gray-900">
+                  ISO Certified
+                </div>
+              </div>
+          </div>
+          <div className="self-center h-8 w-px bg-slate-200" />
+
+          {/* BSE */}
+          <div className="flex items-center gap-3 px-4 py-3 whitespace-nowrap">
+              <img
+                src={bseLogo}
+                alt="BSE"
+                className="Object-contain"
+              />
+              <div className="leading-tight text-[11px] text-gray-600 whitespace-nowrap">
+                <div>Enlistment No.</div>
+                <div className="font-semibold text-gray-900">5940</div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-md shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+        <div
+          className="rounded-2xl p-[0.9px]"
+          style={{
+            background:
+              'linear-gradient(91.44deg, #3F72FF -4.99%, #0036B2 52.99%, #47B4B4 112.17%)',
+          }}
+        >
+          <div className="rounded-2xl overflow-hidden bg-white">
+            {/* Top gradient strip */}
+            <div
+              className="px-6 py-2 text-center text-sm font-semibold text-white"
+              style={{
+                background:
+                  'linear-gradient(95deg, #3F72FF 0%, #0036B2 50%, #47B4B4 100%)',
+              }}
+            >
+              Introducing ⚡ StrykeX 2.0
+            </div>
+
+            {/* Bottom date/time row */}
+            <div className="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-2 text-xs sm:text-sm text-[#404040]">
+              <div className="flex items-center gap-2">
+                <span className="flex h-5 w-5 items-center justify-center rounded-md border border-slate-300 text-[10px]">
+                  📅
+                </span>
+                <span>
+                  Date:{' '}
+                  <span className="font-semibold text-black">17th March</span>
+                </span>
+              </div>
+              <div className="h-6 w-px bg-slate-200 hidden sm:block" />
+              <div className="flex items-center gap-2">
+                <span className="flex h-5 w-5 items-center justify-center rounded-md border border-slate-300 text-[10px]">
+                  ⏰
+                </span>
+                <span>
+                  Time:{' '}
+                  <span className="font-semibold text-black">8pm Onwards</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <img
+          src={heroImage}
+          alt="StrykeX launch banner"
+          className="hidden md:block"
+        />
+        <img
+          src={heroImageMobile}
+          alt="StrykeX launch banner"
+          className="md:hidden"
+        />
     </section>
   )
 }
