@@ -1,0 +1,107 @@
+name: React CI/CD → S3 Deployment - webinar.stockwiz.in
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build & Deploy React App to S3
+    runs-on: self-hosted
+
+    steps:
+      # -----------------------------
+      # Checkout repository
+      # -----------------------------
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # -----------------------------
+      # Setup Node.js
+      # -----------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      # -----------------------------
+      # Install dependencies
+      # -----------------------------
+      - name: Install dependencies
+        run: npm install
+
+      
+      # -----------------------------
+      # Create env file for Vite
+      # -----------------------------
+      # - name: Create env file
+      #   run: |
+      #     echo "VITE_API_BASE_URL=https://api.stockwiz.in/api/v2" > .env
+
+      # -----------------------------
+      # Build React application
+      # -----------------------------
+      - name: Build application
+        run: npm run build
+
+      # -----------------------------
+      # Verify dist folder exists
+      # -----------------------------
+      - name: Verify dist folder
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ dist folder not found. Build failed."
+            exit 1
+          fi
+          echo "✅ dist folder verified."
+
+      # -----------------------------
+      # Configure AWS credentials
+      # -----------------------------
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      # -----------------------------
+      # Define bucket (hard-coded)
+      # -----------------------------
+      - name: Set bucket name
+        run: echo "BUCKET=webinwr-v2.stockwiz" >> $GITHUB_ENV
+
+      # -----------------------------
+      # Clean S3 bucket if data exists
+      # -----------------------------
+      - name: Clean S3 bucket
+        run: |
+          echo "Checking existing data in S3 bucket: $BUCKET"
+          FILE_COUNT=$(aws s3 ls s3://$BUCKET --recursive | wc -l)
+
+          if [ "$FILE_COUNT" -gt 0 ]; then
+            echo "Existing data found. Cleaning bucket..."
+            aws s3 rm s3://$BUCKET --recursive
+          else
+            echo "Bucket is empty. Fresh deployment."
+          fi
+
+      # -----------------------------
+      # Upload fresh dist build
+      # -----------------------------
+      - name: Upload dist to S3
+        run: |
+          aws s3 sync dist/ s3://$BUCKET \
+            --delete \
+            --exact-timestamps \
+            --cache-control "no-cache"
+
+          echo "Deployment completed successfully."
+
+      # -----------------------------
+      # Verify upload
+      # -----------------------------
+      - name: Verify S3 contents
+        run: aws s3 ls s3://$BUCKET --recursive
