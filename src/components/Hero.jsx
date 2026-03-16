@@ -23,7 +23,7 @@ function Hero() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <img src={x2Logo} alt="X2" className="h-11 w-11 rounded-2xl shadow-lg object-contain" />
+        <img src={x2Logo} alt="X2" className="object-contain" />
         <p className="flex flex-wrap items-center gap-2 text-3xl sm:text-4xl lg:text-5xl 1440:text-5xl 2xl:text-5xl 3xl:text-6xl font-bold leading-tight">
           <span
             style={{

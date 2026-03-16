@@ -1,8 +1,56 @@
+import { useState } from 'react'
 import liveOnZoom from '../assets/liveonzoom.svg'
 
 function WebinarForm() {
-  const handleSubmit = (e) => {
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (loading) return
+
+    const trimmedName = fullName.trim()
+    const trimmedPhone = phone.trim()
+
+    if (!trimmedName || !trimmedPhone) {
+      setError('Please enter your name and phone number.')
+      return
+    }
+
+    setError('')
+    setLoading(true)
+
+    try {
+      const res = await fetch(
+        'https://api.stockwiz.in/api/v2/strykex/createStrykex2LaunchEventLead',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: trimmedName,
+            phone: trimmedPhone,
+          }),
+        },
+      )
+
+      if (!res.ok) {
+        throw new Error('Request failed')
+      }
+
+      window.open(
+        'https://events.zoom.us/ej/Aoq5w-CK8i3vQORDReLofwk_sVhtMmb1RqP_Lw5JwKkklfeBQPM6~A_QsQM04g-FpAaYt-vnd9R0oMv-lFu8Z6-38rPB60TZemS1tCR-bp4ofI_1gg',
+        '_blank',
+        'noopener,noreferrer',
+      )
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -34,6 +82,8 @@ function WebinarForm() {
           <input
             type="text"
             placeholder="Enter your full name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
           />
         </div>
@@ -43,9 +93,17 @@ function WebinarForm() {
           <input
             type="tel"
             placeholder="+91"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
           />
         </div>
+
+        {error && (
+          <p className="text-xs text-red-600">
+            {error}
+          </p>
+        )}
 
         <button
           type="submit"
@@ -55,8 +113,9 @@ function WebinarForm() {
               'linear-gradient(91.44deg, #3F72FF -4.99%, #0036B2 52.99%, #47B4B4 112.17%)',
             borderRadius: '6px',
           }}
+          disabled={loading}
         >
-          Join Webinar
+          {loading ? 'Submitting…' : 'Join Webinar'}
         </button>
       </form>
     </div>
